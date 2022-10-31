@@ -76,9 +76,6 @@ class BookingForm(FlaskForm):
    tickets_required = IntegerField(
         'How many tickets would you like to book?', default='1', validators=[InputRequired()])
 
-    # def validate_tickets_required(form, field):
-    #     if not re.match('^[0-9]+$', str(field.data)):
-    #         raise ValidationError('Only whole numbers allowed')
    submit = SubmitField('Confirm Booking')
 
 
