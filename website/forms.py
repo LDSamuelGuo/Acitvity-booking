@@ -3,8 +3,10 @@ from flask import flash
 from website.models import EventGenre, EventCity, EventStatus
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, BooleanField, DecimalField, SelectField, IntegerField, DateTimeLocalField
-from wtforms.validators import InputRequired, Length, Email, EqualTo, NumberRange, Regexp, ValidationError, Alpha
+from wtforms.validators import InputRequired, Length, Email, EqualTo, NumberRange, Regexp, ValidationError
+from wtforms_validators import Alpha
 from flask_wtf.file import FileRequired, FileField, FileAllowed
+
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'jpeg', 'png', 'jpg'}
 
