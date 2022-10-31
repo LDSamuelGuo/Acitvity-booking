@@ -4,9 +4,8 @@ from website.models import EventGenre, EventCity, EventStatus
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, BooleanField, DecimalField, SelectField, IntegerField, DateTimeLocalField
 from wtforms.validators import InputRequired, Length, Email, EqualTo, NumberRange, Regexp, ValidationError
-from wtforms_validators import Alpha
-from flask_wtf.file import FileRequired, FileField, FileAllowed
 
+from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILE = {'PNG', 'JPG', 'JPEG', 'jpeg', 'png', 'jpg'}
 
@@ -92,8 +91,7 @@ class LoginForm(FlaskForm):
 
 
 class RegisterForm(FlaskForm):
-    user_name = StringField("User Name", validators=[InputRequired(), Alpha(message='Can only contain alphabetical characters'), Length(
-        min=4, max=25, message='Username must be between 4 and 25 characters')])
+    user_name = StringField('Username', validators=[InputRequired(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,'Can only contain alphabetical characters')])
     email_id = StringField("Email Address", validators=[
         Email("Please enter a valid email")])
     # linking two fields - password should be equal to data entered in confirm
@@ -112,3 +110,5 @@ class RegisterForm(FlaskForm):
                            InputRequired(), Regexp('^[0-9]{4}$', message='Must be a 4 digit number')])
     # submit button
     submit = SubmitField("Register")
+
+
